@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PoolPrefabs<T> : SaiBehaviour where T : PoolObj
+public abstract class PoolPrefabs<T> : HyDBehaviour where T : PoolObj
 {
     [SerializeField] protected List<T> prefabs = new();
 

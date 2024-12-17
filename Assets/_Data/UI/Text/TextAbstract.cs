@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public abstract class TextAbstact : SaiBehaviour
+public abstract class TextAbstact : HyDBehaviour
 {
     [SerializeField] protected TextMeshProUGUI textPro;
 

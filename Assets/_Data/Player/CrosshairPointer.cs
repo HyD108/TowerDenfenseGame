@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CrosshairPointer : SaiBehaviour
+public class CrosshairPointer : HyDBehaviour
 {
     protected float maxDistance = 100f;
     protected Collider hitObj;

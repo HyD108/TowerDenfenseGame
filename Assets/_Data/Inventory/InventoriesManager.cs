@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoriesManager : SaiSingleton<InventoriesManager>
+public class InventoriesManager : HyDSingleton<InventoriesManager>
 {
     [SerializeField] protected List<InventoryCtrl> inventories;
     [SerializeField] protected List<ItemProfileSO> itemProfiles;

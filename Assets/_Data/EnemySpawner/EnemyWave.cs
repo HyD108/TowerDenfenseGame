@@ -1,20 +1,23 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWave : SaiBehaviour
+public class EnemyWave : HyDBehaviour
 {
     [SerializeField] protected EnemySpawnerCtrl ctrl;
     [SerializeField] protected float spawnSpeed = 1f;
+    [SerializeField] protected float timeBetweenWaves = 5.5f;
+    [SerializeField] protected float countDown = 2f;
+    public float CountDown => countDown;
+    [SerializeField] protected int waveIndex = 0;
     [SerializeField] protected int maxSpawn = 10;
     [SerializeField] protected List<EnemyCtrl> spawnedEnemies = new();
 
-    protected override void Start()
-    {
-        base.Start();
-        Invoke(nameof(this.Spawning), this.spawnSpeed);
-        //InvokeRepeating(nameof(this.RemoveDeadOne), 2f, this.spawnSpeed);
-    }
 
+    private void Update()
+    {
+        this.TimeToSpawnWave();
+    }
     protected virtual void FixedUpdate()
     {
         this.RemoveDeadOne();
@@ -33,9 +36,29 @@ public class EnemyWave : SaiBehaviour
         Debug.Log(transform.name + ": LoadEnemySpawnerCtrl", gameObject);
     }
 
+    protected  virtual IEnumerator SpawnWave()
+    {
+        for(int i = 0; i <= waveIndex; i++)
+        {
+            this.Spawning();
+            yield return new WaitForSeconds(0.3f);
+        }
+        this.waveIndex++;
+    }
+
+    protected virtual void TimeToSpawnWave()
+    {
+        if(countDown <= 0f)
+        {
+            StartCoroutine(SpawnWave());
+            countDown = timeBetweenWaves;
+        }
+        countDown -= Time.deltaTime;
+    }
+
     protected virtual void Spawning()
     {
-        Invoke(nameof(this.Spawning), this.spawnSpeed);
+        //Invoke(nameof(this.Spawning), this.spawnSpeed);
 
         if (this.spawnedEnemies.Count >= this.maxSpawn) return;
 

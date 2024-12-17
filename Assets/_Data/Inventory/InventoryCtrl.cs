@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InventoryCtrl : SaiBehaviour
+public abstract class InventoryCtrl : HyDBehaviour
 {
     [SerializeField] protected List<ItemInventory> items = new();
     public List<ItemInventory> Items => items;

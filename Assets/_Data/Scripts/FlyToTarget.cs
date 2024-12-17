@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyToTarget : SaiBehaviour
+public class FlyToTarget : HyDBehaviour
 {
     protected Transform target;
     [SerializeField] protected float speed = 34f;

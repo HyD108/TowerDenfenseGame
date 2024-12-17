@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Spawner<T> : SaiBehaviour where T : PoolObj
+public abstract class Spawner<T> : HyDBehaviour where T : PoolObj
 {
     [SerializeField] protected Transform holder;
     [SerializeField] protected int spawnCount = 0;

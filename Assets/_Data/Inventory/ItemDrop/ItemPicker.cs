@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class ItemPicker : SaiBehaviour
+public class ItemPicker : HyDBehaviour
 {
     [SerializeField] protected SphereCollider sphereCollider;
 

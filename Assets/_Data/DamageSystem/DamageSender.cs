@@ -1,9 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public abstract class DamageSender : SaiBehaviour
+public abstract class DamageSender : HyDBehaviour
 {
-    [SerializeField] protected int damage = 1;
     [SerializeField] protected Rigidbody rigid;
     [SerializeField] protected Collider _collider;
 
@@ -12,14 +11,13 @@ public abstract class DamageSender : SaiBehaviour
         this.Send(collider);
     }
 
-    protected virtual DamageReceiver Send(Collider collider)
+    protected virtual void Send(Collider collider)
     {
         //Debug.LogError(transform.parent.name + " / " + collider.transform.parent.name);
         DamageReceiver damageReceiver = collider.GetComponent<DamageReceiver>();
-        if (damageReceiver == null) return null;
+        if (damageReceiver == null) return;
 
-        damageReceiver.Receive(this.damage, this);
-        return damageReceiver;
+
     }
 
     protected override void LoadComponents()

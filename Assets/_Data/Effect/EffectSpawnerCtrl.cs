@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EffectSpawnerCtrl : SaiSingleton<EffectSpawnerCtrl>
+public class EffectSpawnerCtrl : HyDSingleton<EffectSpawnerCtrl>
 {
     [SerializeField] protected EffectSpawner spawner;
     public EffectSpawner Spawner => spawner;

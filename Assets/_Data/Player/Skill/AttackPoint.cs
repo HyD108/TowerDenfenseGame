@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackPoint : SaiBehaviour
+public class AttackPoint : HyDBehaviour
 {
     protected override void Reset()
     {

@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class BulletDamageSender : DamageSender
 {
+    [SerializeField] protected int damage = 1;
     [SerializeField] protected SphereCollider sphereCollider;
     [SerializeField] protected EffectDespawn despawn;
 
@@ -29,11 +30,11 @@ public class BulletDamageSender : DamageSender
         Debug.Log(transform.name + ": LoadTriggerCollider", gameObject);
     }
 
-    protected override DamageReceiver Send(Collider collider)
+    protected override void Send(Collider collider)
     {
-        DamageReceiver damageReceiver = base.Send(collider);
-        if (damageReceiver == null) return null;
+        DamageReceiver damageReceiver = GetComponent<DamageReceiver>();
+        if (damageReceiver == null) return;
+        damageReceiver.Receive(this.damage, this);
         this.despawn.DoDespawn();
-        return damageReceiver;
     }
 }

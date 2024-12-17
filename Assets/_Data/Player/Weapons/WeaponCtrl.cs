@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WeaponCtrl : SaiBehaviour
+public class WeaponCtrl : HyDBehaviour
 {
     [SerializeField] protected Transform model;
     [SerializeField] protected Transform attackPoint;

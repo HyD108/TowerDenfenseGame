@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public abstract class EffectDamageSender : DamageSender
 {
+    [SerializeField] protected int damage = 1;
     [SerializeField] protected EffectCtrl effectCtrl;
     [SerializeField] protected SphereCollider sphereCollider;
 
@@ -17,7 +18,7 @@ public abstract class EffectDamageSender : DamageSender
     {
         if (this.effectCtrl != null) return;
         this.effectCtrl = transform.GetComponentInParent<EffectCtrl>();
-        Debug.Log(transform.name + ": LoadEffectCtrl", gameObject);
+        //Debug.Log(transform.name + ": LoadEffectCtrl", gameObject);
     }
 
     protected virtual void LoadSphereCollider()
@@ -29,14 +30,14 @@ public abstract class EffectDamageSender : DamageSender
         Debug.Log(transform.name + ": LoadSphereCollider", gameObject);
     }
 
-    protected override DamageReceiver Send( Collider collider)
+    protected override void Send( Collider collider)
     {
-        DamageReceiver damageReceiver = base.Send(collider);
-        if (damageReceiver == null) return null;
+        DamageReceiver damageReceiver = collider.GetComponent<DamageReceiver>();
+        if (damageReceiver == null) return;
+        damageReceiver.Receive(this.damage, this);
 
         this.ShowHitEffect(collider);
         this.effectCtrl.Despawn.DoDespawn();
-        return damageReceiver;
     }
 
     protected virtual void ShowHitEffect(Collider collider)

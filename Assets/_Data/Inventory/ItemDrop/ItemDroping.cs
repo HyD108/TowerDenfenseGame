@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemDroping : SaiBehaviour
+public class ItemDroping : HyDBehaviour
 {
     [SerializeField] protected ItemDropCtrl ctrl;
     [SerializeField] protected float spawnHeight = 1.0f;

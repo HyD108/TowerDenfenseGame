@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class TowerAbstract : SaiBehaviour
+public abstract class TowerAbstract : HyDBehaviour
 {
     [Header("Tower")]
     [SerializeField] protected TowerCtrl ctrl;
@@ -15,6 +15,6 @@ public abstract class TowerAbstract : SaiBehaviour
     {
         if (this.ctrl != null) return;
         this.ctrl = transform.parent.GetComponent<TowerCtrl>();
-        Debug.Log(transform.name + ": LoadTowerCtrl", gameObject);
+        //Debug.Log(transform.name + ": LoadTowerCtrl", gameObject);
     }
 }

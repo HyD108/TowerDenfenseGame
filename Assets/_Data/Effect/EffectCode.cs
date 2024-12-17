@@ -6,4 +6,5 @@ public enum EffectCode
     Bullet = 1,
     Projectile1 = 2,
     Hit1 = 3,
+    Missle = 4,
 }

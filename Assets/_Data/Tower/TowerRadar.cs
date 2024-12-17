@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SphereCollider))]
-public class TowerRadar : SaiBehaviour
+public class TowerRadar : HyDBehaviour
 {
     [SerializeField] protected EnemyCtrl nearest;
     [SerializeField] protected SphereCollider _collider;

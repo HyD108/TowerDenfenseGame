@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WandBaiscCtrl : SaiBehaviour
+public class WandBaiscCtrl : HyDBehaviour
 {
     [SerializeField] protected Transform model;
 

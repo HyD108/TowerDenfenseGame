@@ -1,7 +1,7 @@
 using com.cyborgAssets.inspectorButtonPro;
 using UnityEngine;
 
-public class InventoryTesting : SaiBehaviour
+public class InventoryTesting : HyDBehaviour
 {
     protected override void Start()
     {

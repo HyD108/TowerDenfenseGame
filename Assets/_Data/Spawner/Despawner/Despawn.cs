@@ -24,7 +24,7 @@ public abstract class Despawn<T> : DespawnBase where T : PoolObj
     {
         if (this.parent != null) return;
         this.parent = transform.parent.GetComponent<T>();
-        Debug.Log(transform.name + ": LoadParent", gameObject);
+        //Debug.Log(transform.name + ": LoadParent", gameObject);
     }
 
     protected virtual void LoadSpawner()
@@ -32,7 +32,7 @@ public abstract class Despawn<T> : DespawnBase where T : PoolObj
         if (this.spawner != null) return;
         //this.spawner = GameObject.FindAnyObjectByType<Spawner<EnemyCtrl>>();
         this.spawner = GameObject.FindAnyObjectByType<Spawner<T>>();
-        Debug.Log(transform.name + ": LoadSpawner", gameObject);
+        //Debug.Log(transform.name + ": LoadSpawner", gameObject);
     }
 
     protected virtual void DespawnByTime()

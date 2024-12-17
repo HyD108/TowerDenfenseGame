@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UISetting : SaiSingleton<UISetting>
+public class UISetting : HyDSingleton<UISetting>
 {
     [SerializeField] protected bool isShow = true;
     protected bool IsShow => isShow;

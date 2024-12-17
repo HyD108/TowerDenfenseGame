@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InputHotkeys : SaiSingleton<InputHotkeys>
+public class InputHotkeys : HyDSingleton<InputHotkeys>
 {
     protected bool isToogleInventoryUI = false;
     public bool IsToogleInventoryUI => isToogleInventoryUI;

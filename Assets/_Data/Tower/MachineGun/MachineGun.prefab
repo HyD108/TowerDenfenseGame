@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPro: {fileID: 3271204955245210658}
-  towerCtrl: {fileID: 4433481879214731447}
+  towerCtrl: {fileID: 0}
 --- !u!1 &1372779080657636849
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735bc539559462f45941d0b40092cf1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ctrl: {fileID: 4433481879214731447}
+  ctrl: {fileID: 0}
   target: {fileID: 0}
   bulletCode: 2
   timer: 0
@@ -703,7 +703,7 @@ MonoBehaviour:
   currentLevel: 1
   maxLevel: 100
   nextLevelExp: 0
-  towerCtrl: {fileID: 4433481879214731447}
+  towerCtrl: {fileID: 0}
 --- !u!1 &5624497013158311829
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,10 +929,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4911851235966384127}
-  - component: {fileID: 4433481879214731447}
+  - component: {fileID: 1017621115247867705}
+  - component: {fileID: 5506979004635475819}
   m_Layer: 0
   m_Name: MachineGun
-  m_TagString: Untagged
+  m_TagString: MachineGun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -947,7 +948,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -43, y: 2.977, z: -39.998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8578277789477441645}
@@ -957,7 +958,7 @@ Transform:
   - {fileID: 845322268041163656}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4433481879214731447
+--- !u!114 &1017621115247867705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -966,13 +967,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 6626319769477503249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04eb9f910d3af824099f4f55327ca132, type: 3}
+  m_Script: {fileID: 11500000, guid: c5e018abe2d9e7c48adaa4b8f2bd584d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  despawn: {fileID: 0}
   radar: {fileID: 3431563441547189485}
   rotator: {fileID: 4636895722015314855}
   towerShooting: {fileID: 8237727334883128714}
   level: {fileID: 3571370077371681159}
+--- !u!136 &5506979004635475819
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6626319769477503249}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1 &6788659991568575989
 GameObject:
   m_ObjectHideFlags: 0

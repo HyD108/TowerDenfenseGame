@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AttackAbstract : SaiBehaviour
+public abstract class AttackAbstract : HyDBehaviour
 {
     [SerializeField] protected PlayerCtrl playerCtrl;
     [SerializeField] protected EffectSpawner spawner;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemDropSpawnerCtrl : SaiSingleton<ItemDropSpawnerCtrl>
+public class ItemDropSpawnerCtrl : HyDSingleton<ItemDropSpawnerCtrl>
 {
     [SerializeField] protected ItemDropSpawner spawner;
     public ItemDropSpawner Spawner => spawner;

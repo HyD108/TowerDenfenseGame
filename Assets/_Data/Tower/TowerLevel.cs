@@ -14,17 +14,17 @@ public class TowerLevel : LevelAbstract
     {
         if (this.towerCtrl != null) return;
         this.towerCtrl = GetComponentInParent<TowerCtrl>();
-        Debug.Log(transform.name + ": LoadTowerCtrl", gameObject);
+        //Debug.Log(transform.name + ": LoadTowerCtrl", gameObject);
     }
 
     protected override bool DeductExp(int exp)
     {
-        return this.towerCtrl.TowerShooting.DeductKillCount(exp);
+        return this.towerCtrl.Shooting.DeductKillCount(exp);
     }
 
     protected override int GetCurrentExp()
     {
-        return this.towerCtrl.TowerShooting.KillCount;
+        return this.towerCtrl.Shooting.KillCount;
     }
 
 }

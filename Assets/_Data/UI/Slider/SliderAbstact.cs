@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class SliderAbstact : SaiBehaviour
+public abstract class SliderAbstact : HyDBehaviour
 {
     [SerializeField] protected Slider slider;
 

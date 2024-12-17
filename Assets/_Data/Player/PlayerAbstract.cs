@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerAbstract : SaiBehaviour
+public abstract class PlayerAbstract : HyDBehaviour
 {
     [SerializeField] protected PlayerCtrl playerCtrl;
 

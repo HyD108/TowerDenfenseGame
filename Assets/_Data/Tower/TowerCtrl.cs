@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerCtrl : SaiBehaviour
+public abstract class TowerCtrl : PoolObj
 {
     [SerializeField] protected TowerRadar radar;
     public TowerRadar Radar => radar;
@@ -10,19 +11,26 @@ public class TowerCtrl : SaiBehaviour
     [SerializeField] protected Transform rotator;
     public Transform Rotator => rotator;
 
-    [SerializeField] protected TowerShooting towerShooting;
-    public TowerShooting TowerShooting => towerShooting;
 
     [SerializeField] protected LevelAbstract level;
     public LevelAbstract Level => level;
+
+    [SerializeField] protected TowerShootingAbstract shooting;
+    public TowerShootingAbstract Shooting => shooting;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadRadar();
         this.LoadRotator();
-        this.LoadTowerShootings();
         this.LoadLevel();
+        this.LoadShootingAbstract();
+    }
+
+    private void LoadShootingAbstract()
+    {
+        if (shooting != null) return;
+        this.shooting = GetComponentInChildren<TowerShootingAbstract>();
     }
 
     protected virtual void LoadLevel()
@@ -46,10 +54,5 @@ public class TowerCtrl : SaiBehaviour
         Debug.Log(transform.name + ": LoadRotator", gameObject);
     }
 
-    protected virtual void LoadTowerShootings()
-    {
-        if (this.towerShooting != null) return;
-        this.towerShooting = GetComponentInChildren<TowerShooting>();
-        Debug.Log(transform.name + ": LoadTowerShootings", gameObject);
-    }
+   
 }

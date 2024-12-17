@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathMoving : SaiBehaviour
+public class PathMoving : HyDBehaviour
 {
     [SerializeField] protected List<Point> points = new();
     public List<Point> Points => points;

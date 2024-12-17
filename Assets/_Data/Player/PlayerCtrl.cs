@@ -2,7 +2,7 @@ using Invector.vCharacterController;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class PlayerCtrl : SaiSingleton<PlayerCtrl>
+public class PlayerCtrl : HyDSingleton<PlayerCtrl>
 {
     [SerializeField] protected PlayerThirdPersonCtrl thirdPersonCtrl;
     public PlayerThirdPersonCtrl ThirdPersonController => thirdPersonCtrl;

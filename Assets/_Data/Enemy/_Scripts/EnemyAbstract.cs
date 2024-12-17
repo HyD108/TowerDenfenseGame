@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class EnemyAbstract : SaiBehaviour
+public abstract class EnemyAbstract : HyDBehaviour
 {
     [SerializeField] protected EnemyCtrl ctrl;
 

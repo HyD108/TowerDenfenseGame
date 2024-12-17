@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class InputManager : SaiSingleton<InputManager>
+public class InputManager : HyDSingleton<InputManager>
 {
     [SerializeField] protected bool isAiming = false;
+    public bool IsAim => isAiming;
 
     [SerializeField] protected float attackHold = 0;
     [SerializeField] protected float attackLightLimit = 0.5f;

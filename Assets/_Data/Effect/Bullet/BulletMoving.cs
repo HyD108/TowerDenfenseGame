@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMoving : SaiBehaviour
+public class BulletMoving : BulletMovingAbstract
 {
     public float speed = 20f;
 
-    protected virtual void Update()
-    {
-        this.Moving();
-    }
-
-   protected virtual void Moving()
+   protected override void Moving()
     {
         transform.parent.Translate(this.speed * Time.deltaTime * Vector3.forward);
     }

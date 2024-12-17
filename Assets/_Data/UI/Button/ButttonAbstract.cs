@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class ButttonAbstract : SaiBehaviour
+public abstract class ButttonAbstract : HyDBehaviour
 {
     [SerializeField] protected Button button;
 

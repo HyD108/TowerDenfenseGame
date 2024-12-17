@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class LevelAbstract : SaiBehaviour
+public abstract class LevelAbstract : HyDBehaviour
 {
     [SerializeField] protected int currentLevel = 1;
     public int CurrentLevel => currentLevel;

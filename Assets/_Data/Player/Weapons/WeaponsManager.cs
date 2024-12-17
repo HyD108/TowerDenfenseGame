@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponsManager : SaiBehaviour
+public class WeaponsManager : HyDBehaviour
 {
     [SerializeField] protected int currentWeaponIndex = 0;
     [SerializeField] protected List<WeaponCtrl> weapons;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AimingRightHand_target : SaiBehaviour
+public class AimingRightHand_target : HyDBehaviour
 {
     protected override void Reset()
     {
