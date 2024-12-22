@@ -5,9 +5,9 @@ using static UnityEditor.Progress;
 
 public class BuildManager : HyDSingleton<BuildManager>
 {
-    //[SerializeField] protected TowerCtrl standardTurretPrefab;
-    //[SerializeField] protected TowerCtrl anotherTurretPrefab;
-    [SerializeField] protected TowerCtrl turretToBuild;
+    //[SerializeField] public TowerCtrl LaserTurretPrefab;
+    //[SerializeField] public TowerCtrl MissleTurretPrefab;
+    [SerializeField] public TowerCtrl turretToBuild;
 
 
 

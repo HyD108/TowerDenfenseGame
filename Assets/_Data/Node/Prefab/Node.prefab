@@ -123,4 +123,4 @@ MonoBehaviour:
   startColor: {r: 0, g: 0, b: 0, a: 0}
   ctrl: {fileID: 0}
   towerName: MachineGun
-  offSet: {x: 0, y: 0.85, z: 0}
+  offSet: {x: 0, y: 0.5, z: 0}

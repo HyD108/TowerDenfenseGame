@@ -11,14 +11,7 @@ public abstract class DamageSender : HyDBehaviour
         this.Send(collider);
     }
 
-    protected virtual void Send(Collider collider)
-    {
-        //Debug.LogError(transform.parent.name + " / " + collider.transform.parent.name);
-        DamageReceiver damageReceiver = collider.GetComponent<DamageReceiver>();
-        if (damageReceiver == null) return;
-
-
-    }
+    protected abstract void Send(Collider collider);
 
     protected override void LoadComponents()
     {

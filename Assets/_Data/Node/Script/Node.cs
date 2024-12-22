@@ -43,7 +43,6 @@ public class Node : NodeBase
         }
 
         TowerCtrl prefab = BuildManager.Instance.GetTurretToBuild();
-        //prefab = this.ctrl.Prefabs.GetByName(towerName);
         TowerCtrl newPrefabs = this.ctrl.Spawner.Spawn(prefab, spawnPosition);
         newPrefabs.transform.position += offSet;
         newPrefabs.gameObject.SetActive(true);

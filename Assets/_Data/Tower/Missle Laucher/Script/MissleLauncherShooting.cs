@@ -23,7 +23,6 @@ public class MissleLauncherShooting : TowerShootingAbstract
         EffectCtrl prefab = EffectSpawnerCtrl.Instance.Prefabs.GetByName(this.bulletCode.ToString());
         EffectCtrl newEfffect = EffectSpawnerCtrl.Instance.Spawner.Spawn(prefab, firePoint.transform.position, firePoint.transform.rotation);
         newEfffect.gameObject.SetActive(true);
-
         return prefab;
     }
 }

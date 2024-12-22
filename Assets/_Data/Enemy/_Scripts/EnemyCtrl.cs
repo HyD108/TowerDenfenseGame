@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,12 +13,22 @@ public abstract class EnemyCtrl : PoolObj
     [SerializeField] protected EnemyDamageReceiver enemyDamageReceiver;
     public EnemyDamageReceiver EnemyDamageReceiver => enemyDamageReceiver;
 
+    [SerializeField] protected EnemyMoving moving;
+    public EnemyMoving EnemyMoving => moving;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadAgent();
         this.LoadAnimator();
         this.LoadEnemyDamageReceiver();
+        this.LoadMoving();
+    }
+
+    private void LoadMoving()
+    {
+        if (this.moving != null) return;
+        this.moving = GetComponentInChildren<EnemyMoving>();
     }
 
     protected virtual void LoadAgent()

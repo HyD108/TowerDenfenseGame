@@ -3,7 +3,12 @@ using UnityEngine;
 public abstract class DamageReceiver : HyDBehaviour
 {
     [SerializeField] protected float currentHP = 10;
-    [SerializeField] public float CurrentMP => currentHP;
+    public float CurrentHP
+    {
+        get { return currentHP; }
+        set { currentHP = Mathf.Max(value, 0); }
+    }
+    //[SerializeField] public float CurrentMP => currentHP;
     [SerializeField] protected int maxHP = 10;
     [SerializeField] protected bool isDead = false;
     [SerializeField] protected bool isImmotal = false;

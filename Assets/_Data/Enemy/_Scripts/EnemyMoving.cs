@@ -35,14 +35,18 @@ public class EnemyMoving : EnemyAbstract
     protected virtual void Moving()
     {
         this.LoadMovingStatus();
-        if (this.isFinish || !this.canMove || this.IsDead())
+        if (this.isFinish || !this.canMove || this.IsDead() || !this.ctrl.Agent.enabled || !this.ctrl.Agent.isOnNavMesh)
         {
             this.ctrl.Agent.isStopped = true;
             return;
         }
 
         this.GetNextPoint();
-        this.ctrl.Agent.SetDestination(this.currentPoint.transform.position);
+        //this.ctrl.Agent.SetDestination(this.currentPoint.transform.position);
+        if (this.ctrl.Agent.isOnNavMesh)
+        {
+            this.ctrl.Agent.SetDestination(this.currentPoint.transform.position);
+        }
     }
 
     protected virtual bool IsDead()
@@ -55,12 +59,27 @@ public class EnemyMoving : EnemyAbstract
         this.currentPoint = this.path.GetPoint(this.currentPointIndex);
         this.pointDistance = Vector3.Distance(this.currentPoint.transform.position, transform.position);
         if (this.pointDistance < this.pointDistanceLimit) this.currentPointIndex++;
-        if (this.currentPointIndex > this.path.Points.Count-1) this.isFinish = true;
+        if (this.currentPointIndex > this.path.Points.Count - 1)
+        {
+            this.isFinish = true;
+            PlayerStats.Lives--;
+            this.ctrl.EnemyDamageReceiver.CurrentHP = 0;
+            this.IsDead();
+            this.ctrl.Despawn.DoDespawn();
+            this.OnRespawn();
+        }
+
     }
 
     protected virtual void LoadMovingStatus()
     {
         this.isMoving = !this.ctrl.Agent.isStopped;
         this.ctrl.Animator.SetBool("isMoving", this.isMoving);
+    }
+    public void OnRespawn()
+    {
+        this.currentPointIndex = 0;  
+        this.currentPoint = this.path.GetPoint(this.currentPointIndex);  
+        this.isFinish = false;  
     }
 }

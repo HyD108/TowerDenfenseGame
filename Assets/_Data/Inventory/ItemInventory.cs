@@ -12,7 +12,7 @@ public class ItemInventory
 
     [SerializeField] protected string itemName;
 
-    public int itemCount; //Not clean yet
+    public int itemCount;
 
     public ItemInventory(ItemProfileSO itemProfile, int itemCount)
     {

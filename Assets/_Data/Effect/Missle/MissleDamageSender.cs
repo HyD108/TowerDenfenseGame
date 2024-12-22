@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MissleDamageSender : DamageSender
@@ -9,6 +10,7 @@ public class MissleDamageSender : DamageSender
     public float damage = 50f;
     [SerializeField] protected EffectDespawn despawn;
     [SerializeField] protected MissleCtrl ctrl;
+ 
 
 
     protected override void LoadComponents()
@@ -33,18 +35,34 @@ public class MissleDamageSender : DamageSender
     }
     protected override void Send(Collider collider)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+
+        bool hasExploded = false;
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, explosionRadius);
 
         foreach (Collider nearbyObject in colliders)
         {
-            DamageReceiver target = nearbyObject.GetComponent<DamageReceiver>();
-
-            if (target == null) return;
+            DamageReceiver target = nearbyObject.GetComponentInChildren<DamageReceiver>();
+            if (target == null) continue;
             float distance = Vector3.Distance(transform.position, nearbyObject.transform.position);
-                float damageAmount = Mathf.Max(0, damage * (1 - (distance / explosionRadius)));
-                target.Receive(damageAmount);
+            float damageAmount = Mathf.Max(0, damage * (1 - (distance / explosionRadius)));
+            target.Receive(damageAmount);
+            hasExploded = true;
         }
-        this.despawn.DoDespawn();
-
+        if (hasExploded)
+        {
+            this.despawn.DoDespawn();
+            SpawnExplosion();          
+        }
+        
     }
+        protected virtual EffectCtrl SpawnExplosion()
+    {
+        EffectCtrl hitPrefab = EffectSpawnerCtrl.Instance.Prefabs.GetByName(EffectCode.Explosion.ToString());
+        EffectCtrl newHitEfffect = EffectSpawnerCtrl.Instance.Spawner.Spawn(hitPrefab, this.transform.position, Quaternion.identity);
+        newHitEfffect.gameObject.SetActive(true);
+        return hitPrefab;
+    }
+   
+
 }
+

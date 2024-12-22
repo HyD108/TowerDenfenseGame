@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemyDamageReceiver : DamageReceiver
@@ -10,6 +11,7 @@ public class EnemyDamageReceiver : DamageReceiver
         base.LoadComponents();
         this.LoadCtrl();
         this.LoadCapsuleCollider();
+
     }
 
     protected virtual void LoadCapsuleCollider()

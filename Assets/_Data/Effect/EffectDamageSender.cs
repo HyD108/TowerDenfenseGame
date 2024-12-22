@@ -35,6 +35,7 @@ public abstract class EffectDamageSender : DamageSender
         DamageReceiver damageReceiver = collider.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;
         damageReceiver.Receive(this.damage, this);
+        Debug.Log("Work");
 
         this.ShowHitEffect(collider);
         this.effectCtrl.Despawn.DoDespawn();
