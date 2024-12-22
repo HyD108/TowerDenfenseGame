@@ -26,7 +26,6 @@ public class Node : NodeBase
 
     private void OnMouseDown()
     {
-        if (InputManager.Instance.IsAim) return;
 
         if(BuildManager.Instance.GetTurretToBuild() == null) return;
 

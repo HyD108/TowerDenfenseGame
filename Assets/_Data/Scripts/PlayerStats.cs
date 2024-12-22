@@ -12,5 +12,11 @@ public class PlayerStats : HyDBehaviour
     {
         Lives = this.startLives;
         Debug.Log(Lives);
+        ItemProfileSO goldProfile = new ItemProfileSO { itemName = "Gold" };  
+
+        ItemInventory goldInventory = new ItemInventory(goldProfile, 100);  
+
+        InventoriesManager.Instance.AddItem(goldInventory);
     }
+
 }
