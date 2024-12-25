@@ -54,6 +54,7 @@ public class EnemyWave : HyDBehaviour
             countDown = timeBetweenWaves;
         }
         countDown -= Time.deltaTime;
+        countDown = Mathf.Clamp(countDown, 0f, Mathf.Infinity);
     }
 
     protected virtual void Spawning()

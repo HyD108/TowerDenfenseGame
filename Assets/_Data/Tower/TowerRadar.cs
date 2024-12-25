@@ -33,10 +33,6 @@ public class TowerRadar : HyDBehaviour
         this.RemoveEnemy(enemyCtrl);
     }
 
-    protected virtual void OnCollisionEnter(Collision collision)
-    {
-        //Not use in this project
-    }
 
     protected override void LoadComponents()
     {

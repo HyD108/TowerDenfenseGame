@@ -5,19 +5,38 @@ using static UnityEditor.Progress;
 
 public class BuildManager : HyDSingleton<BuildManager>
 {
-    //[SerializeField] public TowerCtrl LaserTurretPrefab;
-    //[SerializeField] public TowerCtrl MissleTurretPrefab;
-    [SerializeField] public TowerCtrl turretToBuild;
+    [SerializeField] protected TowerSpawnCtrl ctrl;
+    [SerializeField] protected TurretBlueprint turretToBuild;
+    public bool CanBuild { get { return turretToBuild != null; } }
 
-
-
-    public TowerCtrl GetTurretToBuild()
+    protected override void LoadComponents()
     {
-        return this.turretToBuild;
+        base.LoadComponents();
+        this.LoadTower();
     }
 
-    public void SetTurretToBuild(TowerCtrl turret)
+    private void LoadTower()
     {
-        turretToBuild = turret; 
+        if (this.ctrl != null) return;
+        this.ctrl = FindAnyObjectByType<TowerSpawnCtrl>();
     }
+    public virtual void SelectTurretToBuild(TurretBlueprint turret)
+    {
+        turretToBuild = turret;
+    }
+
+    public void BuildTurretOn(Node node)
+    {
+        InventoryCtrl currencyInventory = InventoriesManager.Instance.Currency();
+        ItemInventory item = currencyInventory.FindItem(ItemCode.Gold);
+        int money = item.itemCount;
+        item.Deduct(turretToBuild.cost);
+        if (money < turretToBuild.cost) return;
+        TowerCtrl newPrefabs = this.turretToBuild.prefab;
+        TowerCtrl prefab = this.ctrl.Spawner.Spawn(newPrefabs, node.transform.position + node.offset, Quaternion.identity);
+        prefab.gameObject.SetActive(true);
+        node.prefab = prefab;
+        Debug.Log(money);
+    }
+
 }

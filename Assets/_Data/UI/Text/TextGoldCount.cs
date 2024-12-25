@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TextGoldCount : TextAbstact
 {
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
         this.LoadGoldCount();
     }
@@ -10,10 +10,6 @@ public class TextGoldCount : TextAbstact
     protected virtual void LoadGoldCount()
     {
         ItemInventory item = InventoriesManager.Instance.Currency().FindItem(ItemCode.Gold);
-        string goldCount;
-        if (item == null) goldCount = "0";
-        else goldCount = item.itemCount.ToString();
-        this.textPro.text = goldCount;
-
+        this.textPro.text = "$" + item.itemCount.ToString();
     }
 }

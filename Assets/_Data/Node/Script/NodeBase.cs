@@ -17,7 +17,7 @@ public abstract class NodeBase : HyDBehaviour
 
     private void OnMouseEnter()
     {
-        if (BuildManager.Instance.GetTurretToBuild() == null) return;
+        if (!BuildManager.Instance.CanBuild) return;
         rend.material.color = hoverColor;
     }
     private void OnMouseExit()

@@ -10,3 +10,11 @@ public enum ItemCode
 
     PotionMana = 200,
 }
+
+public enum TurretCode
+{
+    NoName = 0,
+    StandardTurret = 1,
+    LaserBeamer = 2,
+    MissileLauncher = 3,
+}

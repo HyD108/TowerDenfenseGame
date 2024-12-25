@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LivesUI : Text3DAbstact
+public class LivesUI : TextAbstact
 {
     private void Update()
     {

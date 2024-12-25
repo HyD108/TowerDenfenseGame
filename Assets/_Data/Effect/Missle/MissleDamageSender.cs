@@ -44,8 +44,10 @@ public class MissleDamageSender : DamageSender
             DamageReceiver target = nearbyObject.GetComponentInChildren<DamageReceiver>();
             if (target == null) continue;
             float distance = Vector3.Distance(transform.position, nearbyObject.transform.position);
-            float damageAmount = Mathf.Max(0, damage * (1 - (distance / explosionRadius)));
+            float damageAmount = Mathf.Max(0, damage * explosionRadius);
             target.Receive(damageAmount);
+            //target.CurrentHP -= damage;
+            Debug.Log(target.CurrentHP);
             hasExploded = true;
         }
         if (hasExploded)

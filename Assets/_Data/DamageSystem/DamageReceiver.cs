@@ -8,7 +8,7 @@ public abstract class DamageReceiver : HyDBehaviour
         get { return currentHP; }
         set { currentHP = Mathf.Max(value, 0); }
     }
-    //[SerializeField] public float CurrentMP => currentHP;
+    [SerializeField] public float CurrentMP => currentHP;
     [SerializeField] protected int maxHP = 10;
     [SerializeField] protected bool isDead = false;
     [SerializeField] protected bool isImmotal = false;

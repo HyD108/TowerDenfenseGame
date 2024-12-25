@@ -6,17 +6,11 @@ using UnityEngine;
 public class PlayerStats : HyDBehaviour
 {
     public static int Lives;
-    public int startLives = 20;
+    public int startLives = 5;
 
     protected override void Start()
     {
         Lives = this.startLives;
-        Debug.Log(Lives);
-        ItemProfileSO goldProfile = new ItemProfileSO { itemName = "Gold" };  
-
-        ItemInventory goldInventory = new ItemInventory(goldProfile, 100);  
-
-        InventoriesManager.Instance.AddItem(goldInventory);
     }
 
 }

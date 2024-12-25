@@ -25,6 +25,7 @@ public class WaveCountDownTimer : TextAbstact
     }
     protected virtual void LoadTimeSpawn()
     {
-        this.textPro.text = Mathf.Round(this.wave.CountDown).ToString();
+
+        this.textPro.text = string.Format("{0:0.00}", wave.CountDown);
     }
 }

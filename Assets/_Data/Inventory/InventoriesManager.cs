@@ -1,10 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class InventoriesManager : HyDSingleton<InventoriesManager>
 {
     [SerializeField] protected List<InventoryCtrl> inventories;
     [SerializeField] protected List<ItemProfileSO> itemProfiles;
+
+    protected override void Start()
+    {
+        base.Start();
+        this.AddItem(ItemCode.Gold, 100);
+    }
 
     protected override void LoadComponents()
     {
@@ -82,6 +89,11 @@ public class InventoriesManager : HyDSingleton<InventoriesManager>
         ItemProfileSO itemProfile = this.GetProfileByCode(itemCode);
         ItemInventory item = new(itemProfile, itemCount);
         this.RemoveItem(item);
+    }
+
+    public virtual void RemoveItem(ItemInventory item, int itemCount)
+    {
+        item.itemCount -= itemCount;
     }
 
     public virtual void RemoveItem(ItemInventory itemInventory)
