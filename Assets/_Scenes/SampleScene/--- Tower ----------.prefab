@@ -376,7 +376,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -400,6 +400,7 @@ MonoBehaviour:
   _collider: {fileID: 1068778110598035643}
   _rigibody: {fileID: 4848244010339292562}
   enemies: []
+  enemyTag: Enemy
 --- !u!1 &1112176624341886641
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +413,8 @@ GameObject:
   - component: {fileID: 1357259545120344344}
   - component: {fileID: 3353280301835783013}
   - component: {fileID: 4248830428815334988}
-  m_Layer: 6
+  - component: {fileID: 9057235083003610763}
+  m_Layer: 8
   m_Name: TowerRadar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,13 +476,13 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5244243
+  m_Radius: 4
   m_Center: {x: 5.843952e-10, y: 0, z: -0.5244241}
 --- !u!114 &4248830428815334988
 MonoBehaviour:
@@ -498,6 +500,30 @@ MonoBehaviour:
   _collider: {fileID: 3353280301835783013}
   _rigibody: {fileID: 1357259545120344344}
   enemies: []
+  enemyTag: Enemy
+--- !u!136 &9057235083003610763
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112176624341886641}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.90811056
+  m_Height: 3.574408
+  m_Direction: 2
+  m_Center: {x: -0.061247192, y: 0, z: -1.2287188}
 --- !u!1 &1203809018665448257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1207,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -1205,6 +1231,7 @@ MonoBehaviour:
   _collider: {fileID: 6325669530123935505}
   _rigibody: {fileID: 2786822290200884587}
   enemies: []
+  enemyTag: Enemy
 --- !u!1 &2758784851472798809
 GameObject:
   m_ObjectHideFlags: 0

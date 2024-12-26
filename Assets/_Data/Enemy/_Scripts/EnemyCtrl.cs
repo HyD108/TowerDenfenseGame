@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public abstract class EnemyCtrl : PoolObj
 {
@@ -15,6 +16,21 @@ public abstract class EnemyCtrl : PoolObj
 
     [SerializeField] protected EnemyMoving moving;
     public EnemyMoving EnemyMoving => moving;
+    public Image healthBarFill;
+
+    protected override void Start()
+    {
+        UpdateHealthBar();
+    }
+
+    public void UpdateHealthBar()
+    {
+        if (EnemyDamageReceiver != null && healthBarFill != null)
+        {
+            healthBarFill.fillAmount = EnemyDamageReceiver.CurrentHP / EnemyDamageReceiver.MaxHp;
+        }
+    }
+
 
     protected override void LoadComponents()
     {

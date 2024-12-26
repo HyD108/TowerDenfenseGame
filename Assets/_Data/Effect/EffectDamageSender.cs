@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public abstract class EffectDamageSender : DamageSender
 {
-    [SerializeField] protected int damage = 1;
+    [SerializeField] protected float damage = 1.0f;
     [SerializeField] protected EffectCtrl effectCtrl;
     [SerializeField] protected SphereCollider sphereCollider;
 

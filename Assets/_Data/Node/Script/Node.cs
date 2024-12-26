@@ -8,11 +8,15 @@ public class Node : NodeBase
     public Vector3 offset;
     [SerializeField] public TowerCtrl prefab;
 
-
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadTower();
+    }
+    protected override void Start()
+    {
+        base.Start();
+        Physics.IgnoreLayerCollision(8, 9);
     }
 
     private void LoadTower()
@@ -23,6 +27,7 @@ public class Node : NodeBase
 
     private void OnMouseDown()
     {
+        Debug.Log("OnMouseDown triggered on: " + gameObject.name);
         if (!BuildManager.Instance.CanBuild) return;
         BuildManager.Instance.BuildTurretOn(this);
     }

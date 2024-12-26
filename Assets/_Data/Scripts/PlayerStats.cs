@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerStats : HyDBehaviour
 {
     public static int Lives;
-    public int startLives = 5;
+    public int startLives = 1;
 
     protected override void Start()
     {

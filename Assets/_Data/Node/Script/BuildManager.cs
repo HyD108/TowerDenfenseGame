@@ -33,8 +33,17 @@ public class BuildManager : HyDSingleton<BuildManager>
         item.Deduct(turretToBuild.cost);
         if (money < turretToBuild.cost) return;
         TowerCtrl newPrefabs = this.turretToBuild.prefab;
+        Collider platformCollider = node.GetComponent<Collider>();
+        if (platformCollider != null)
+        {
+            platformCollider.enabled = false;
+        }
         TowerCtrl prefab = this.ctrl.Spawner.Spawn(newPrefabs, node.transform.position + node.offset, Quaternion.identity);
         prefab.gameObject.SetActive(true);
+        if (platformCollider != null)
+        {
+            platformCollider.enabled = true;
+        }
         node.prefab = prefab;
         Debug.Log(money);
     }

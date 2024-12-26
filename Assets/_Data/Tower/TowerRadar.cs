@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,29 +10,33 @@ public class TowerRadar : HyDBehaviour
     [SerializeField] protected SphereCollider _collider;
     [SerializeField] protected Rigidbody _rigibody;
     [SerializeField] protected List<EnemyCtrl> enemies;
+    [SerializeField] private float detectionRadius = 12f; 
+    [SerializeField] private LayerMask enemyLayer; 
 
     protected virtual void FixedUpdate()
     {
         this.RemoveDeadEnemy();
         this.FindNearest();
+        this.DetectEnemies();
     }
 
-    protected virtual void OnTriggerEnter(Collider collider)
+    private void DetectEnemies()
     {
-        EnemyCtrl enemyCtrl = collider.GetComponentInParent<EnemyCtrl>();
-        if (enemyCtrl == null) return;
+        Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, enemyLayer);
 
-        this.AddEnemy(enemyCtrl);
+        enemies.Clear();
+        foreach (Collider hit in hits)
+        {
+            EnemyCtrl enemy = hit.GetComponentInParent<EnemyCtrl>();
+            if (enemy != null && !enemies.Contains(enemy))
+            {
+                enemies.Add(enemy);
+            }
+        }
+
+
+        FindNearest();
     }
-
-    protected virtual void OnTriggerExit(Collider collider)
-    {
-        EnemyCtrl enemyCtrl = collider.GetComponentInParent<EnemyCtrl>();
-        if (enemyCtrl == null) return;
-
-        this.RemoveEnemy(enemyCtrl);
-    }
-
 
     protected override void LoadComponents()
     {
@@ -82,6 +86,7 @@ public class TowerRadar : HyDBehaviour
                 this.nearest = enemyCtrl;
             }
         }
+
     }
 
     public virtual EnemyCtrl GetTarget()

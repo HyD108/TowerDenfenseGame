@@ -7,7 +7,7 @@ public class LaserDamageSender : HyDBehaviour
 {
     [SerializeField] protected LaserBeamerCtrl ctrl;
     public LayerMask hitLayer;
-    [SerializeField] protected float laserDamage = 0.8f;
+    [SerializeField] protected float laserDamage = 0.4f;
 
     protected override void LoadComponents()
     {
