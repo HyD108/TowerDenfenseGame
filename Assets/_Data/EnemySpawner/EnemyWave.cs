@@ -68,8 +68,8 @@ public class EnemyWave : HyDBehaviour
         {
             if (!enemy.EnemyDamageReceiver.IsDead())
             {
-                enemy.EnemyDamageReceiver.CurrentHP += 5;
-                enemy.Agent.speed = Mathf.Clamp(enemy.Agent.speed + 0.5f, 0, maxSpeed);
+                enemy.EnemyDamageReceiver.MaxHp += 6;
+                enemy.Agent.speed = Mathf.Clamp(enemy.Agent.speed + 0.8f, 0, maxSpeed);
             }
         }
 

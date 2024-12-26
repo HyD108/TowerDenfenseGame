@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -9,8 +10,8 @@ public class EnemyDamageReceiver : DamageReceiver
     {
         base.LoadComponents();
         this.LoadCapsuleCollider();
-
     }
+
 
     protected virtual void LoadCapsuleCollider()
     {
@@ -32,9 +33,9 @@ public class EnemyDamageReceiver : DamageReceiver
             this.ctrl.Agent.isStopped = true;
             this.ctrl.Agent.enabled = false; 
         }
-        Invoke(nameof(this.DoDespawn), 5f);
-
+        Invoke(nameof(this.DoDespawn), 5f);       
         ItemDropSpawnerCtrl.Instance.DropMany(ItemCode.Gold, transform.position, 10);
+        InventoriesManager.Instance.AddItem(ItemCode.Gold, 10);
         ItemDropSpawnerCtrl.Instance.Drop(ItemCode.Wand, transform.position, 1);
         InventoriesManager.Instance.AddItem(ItemCode.PlayerExp, 1);
     }

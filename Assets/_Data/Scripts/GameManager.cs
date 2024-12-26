@@ -5,7 +5,7 @@ using System;
 public class GameManager : HyDSingleton<GameManager>
 {
 
-    public static bool GameIsOver;
+    public static bool GameIsOver = false;
 
     public GameOver gameOverUI;
     public GameObject completeLevelUI;
@@ -35,6 +35,7 @@ public class GameManager : HyDSingleton<GameManager>
         if (PlayerStats.Lives <= 0)
         {
             EndGame();
+            
         }
     }
 

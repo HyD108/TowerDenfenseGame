@@ -10,7 +10,7 @@ public class InventoriesManager : HyDSingleton<InventoriesManager>
     protected override void Start()
     {
         base.Start();
-        this.AddItem(ItemCode.Gold, 1000);
+        this.AddItem(ItemCode.Gold, 400);
     }
 
     protected override void LoadComponents()

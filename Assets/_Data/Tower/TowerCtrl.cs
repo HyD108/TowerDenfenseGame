@@ -18,6 +18,7 @@ public abstract class TowerCtrl : PoolObj
     [SerializeField] protected TowerShootingAbstract shooting;
     public TowerShootingAbstract Shooting => shooting;
 
+
     protected override void LoadComponents()
     {
         base.LoadComponents();

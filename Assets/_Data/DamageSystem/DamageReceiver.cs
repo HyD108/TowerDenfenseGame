@@ -2,15 +2,19 @@ using UnityEngine;
 
 public abstract class DamageReceiver : EnemyAbstract
 {
-    [SerializeField] protected float currentHP = 10;
+    [SerializeField] protected float currentHP = 15;
     public float CurrentHP
     {
         get { return currentHP; }
         set { currentHP = Mathf.Max(value, 0); }
     }
     [SerializeField] public float CurrentMP => currentHP;
-    [SerializeField] protected int maxHP;
-    public int MaxHp => maxHP;
+    [SerializeField] protected float maxHP = 14;
+    public float MaxHp
+    {
+        get { return maxHP; }
+        set { maxHP = Mathf.Max(value, 0); }
+    }
     [SerializeField] protected bool isDead = false;
     [SerializeField] protected bool isImmotal = false;
 

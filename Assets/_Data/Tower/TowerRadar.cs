@@ -11,7 +11,9 @@ public class TowerRadar : HyDBehaviour
     [SerializeField] protected Rigidbody _rigibody;
     [SerializeField] protected List<EnemyCtrl> enemies;
     [SerializeField] private float detectionRadius = 12f; 
-    [SerializeField] private LayerMask enemyLayer; 
+    [SerializeField] private LayerMask enemyLayer;
+    public float enemyDistance;
+    public float maxDistance = 12f;
 
     protected virtual void FixedUpdate()
     {
@@ -76,15 +78,16 @@ public class TowerRadar : HyDBehaviour
     protected virtual void FindNearest()
     {
         float nearestDistance = Mathf.Infinity;
-        float enemyDistance;
+        this.nearest = null;
         foreach (EnemyCtrl enemyCtrl in this.enemies)
         {
             enemyDistance = Vector3.Distance(transform.position, enemyCtrl.transform.position);
-            if (enemyDistance < nearestDistance)
+            if (enemyDistance < nearestDistance && enemyDistance <= maxDistance)
             {
                 nearestDistance = enemyDistance;
                 this.nearest = enemyCtrl;
             }
+            //else { this.nearest = null; }
         }
 
     }
