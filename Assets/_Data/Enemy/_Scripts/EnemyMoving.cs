@@ -37,12 +37,14 @@ public class EnemyMoving : EnemyAbstract
         this.LoadMovingStatus();
         if (this.isFinish || !this.canMove || this.IsDead() || !this.ctrl.Agent.enabled || !this.ctrl.Agent.isOnNavMesh)
         {
-            this.ctrl.Agent.isStopped = true;
+            if (this.ctrl.Agent != null && this.ctrl.Agent.enabled && this.ctrl.Agent.isOnNavMesh)
+            {
+                this.ctrl.Agent.isStopped = true;
+            }
             return;
         }
 
         this.GetNextPoint();
-        //this.ctrl.Agent.SetDestination(this.currentPoint.transform.position);
         if (this.ctrl.Agent.isOnNavMesh)
         {
             this.ctrl.Agent.SetDestination(this.currentPoint.transform.position);
@@ -73,8 +75,12 @@ public class EnemyMoving : EnemyAbstract
 
     protected virtual void LoadMovingStatus()
     {
-        this.isMoving = !this.ctrl.Agent.isStopped;
-        this.ctrl.Animator.SetBool("isMoving", this.isMoving);
+        if (this.ctrl.Agent != null && this.ctrl.Agent.enabled && this.ctrl.Agent.isOnNavMesh)
+        {
+            this.isMoving = !this.ctrl.Agent.isStopped;
+            this.ctrl.Animator.SetBool("isMoving", this.isMoving);
+        }
+
     }
     public void OnRespawn()
     {

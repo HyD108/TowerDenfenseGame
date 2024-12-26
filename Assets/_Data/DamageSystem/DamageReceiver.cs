@@ -33,7 +33,7 @@ public abstract class DamageReceiver : EnemyAbstract
     public virtual void Receive(float damage)
     {
         if (!this.isImmotal) this.currentHP -= damage;
-
+        this.ctrl.UpdateHealthBar();
         if (this.currentHP < 0) this.currentHP = 0;
 
         if (this.IsDead()) this.OnDead();

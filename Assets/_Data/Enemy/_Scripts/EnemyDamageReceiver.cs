@@ -27,6 +27,11 @@ public class EnemyDamageReceiver : DamageReceiver
     {
         this.ctrl.Animator.SetBool("isDead", this.isDead);
         this.capsuleCollider.enabled = false;
+        if (this.ctrl.Agent != null && this.ctrl.Agent.enabled)
+        {
+            this.ctrl.Agent.isStopped = true;
+            this.ctrl.Agent.enabled = false; 
+        }
         Invoke(nameof(this.DoDespawn), 5f);
 
         ItemDropSpawnerCtrl.Instance.DropMany(ItemCode.Gold, transform.position, 10);
@@ -47,6 +52,8 @@ public class EnemyDamageReceiver : DamageReceiver
     protected override void Reborn()
     {
         base.Reborn();
+        this.ctrl.Agent.enabled = true;
+        gameObject.layer = LayerMask.NameToLayer("Enemy");
         this.capsuleCollider.enabled = true;
     }
 }
