@@ -80,7 +80,6 @@ public class EnemyMoving : EnemyAbstract
             this.isMoving = !this.ctrl.Agent.isStopped;
             this.ctrl.Animator.SetBool("isMoving", this.isMoving);
         }
-
     }
     public void OnRespawn()
     {
